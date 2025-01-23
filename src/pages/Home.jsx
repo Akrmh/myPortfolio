@@ -8,7 +8,7 @@ import Skills from "../sections/Skills"
 const Home = () => {
  
   return (
-    <main className="  space-y-8">
+    <main>
        <Hero />
        <AboutMe/>
        <Portfolio/>

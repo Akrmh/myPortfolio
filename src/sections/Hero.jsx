@@ -42,7 +42,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <main className="bg-[#1f242d] text-white min-h-screen">
+    <main className="bg-[#1f242d] text-white min-w-screen">
       <section
         className="home flex flex-col md:flex-row justify-between items-center min-h-screen px-10 pt-20"
         data-aos="fade-in"
@@ -58,10 +58,9 @@ const Hero = () => {
             </span>
           </h3>
           <p className="text-lg text-gray-300 mb-5" data-aos="fade-up">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet
-            aperiam harum maxime ea magni consectetur! Expedita error earum
-            sint. Adipisci expedita, non provident recusandae ipsam delectus.
-            Quo officiis earum ipsa.
+            Do you want to build an awesome website that stands out? 
+            I specialize in creating modern, user-friendly, and visually stunning web solutions 
+            tailored to your needs. Let’s turn your ideas into reality!
           </p>
           <div className="flex space-x-4 mb-5">
             <a

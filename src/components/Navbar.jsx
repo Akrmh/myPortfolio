@@ -10,15 +10,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#1f242d] text-white ">
+    <div className="bg-[#1f242d] text-white min-w-full">
        {/* Header */}
-       <header className="fixed top-0 left-0 w-full py-5 px-10 flex justify-between items-center z-50 bg-transparent">
+       <header className="fixed top-0 left-0 min-w-full py-5 px-10 flex justify-between items-center z-50 bg-transparent max-sm:pr-[20%]">
        <a href="#" className="text-2xl font-bold text-white animate-slideRight">
          Portfolio.
        </a>
  
        {/* Hamburger Menu for Mobile and Tablet */}
-       <div className="sm:hidden md:hidden lg:hidden flex items-center">
+       <div className="sm:hidden flex items-center">
          <button
            onClick={toggleMenu}
            className="text-white focus:outline-none"
