@@ -1,206 +1,113 @@
 import { useEffect } from "react";
-import AOS from "aos";
+import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGit } from "react-icons/fa";
+import { SiTailwindcss, SiExpress, SiMongodb, SiMysql, SiGithub, SiSlack, SiTrello } from "react-icons/si";
+import Aos from "aos";
 import "aos/dist/aos.css";
-import { FaHtml5, FaCss3Alt, FaMobileAlt } from "react-icons/fa";
-import { SiJavascript, SiReact, SiTailwindcss, SiExpress, SiMongodb, SiMysql, SiGit, SiGithub, SiSlack, SiTrello } from "react-icons/si";
-import Card from "../components/Card";
 
 const Skills = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 1000, // Animation duration
-      once: false, // Animations will trigger every time the element comes into view
-    });
-    AOS.refresh(); // Recalculate positions for dynamically loaded content
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("progress-animation");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const progressElements = document.querySelectorAll(".progress-line span");
+    progressElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      progressElements.forEach((el) => observer.unobserve(el));
+    };
   }, []);
 
-  const frontEndSkills = [
-    {
-      skillName: "HTML",
-      skillLevel: "Advanced",
-      skillLevelTextColor: "text-red-700",
-      skillLevelBorderColor: "border-red-700",
-      skillLevelBGColor: "bg-red-100",
-      skillLogo: <FaHtml5 color="red" size={40} />,
-    },
-    {
-      skillName: "CSS",
-      skillLevel: "Advanced",
-      skillLevelTextColor: "text-blue-700",
-      skillLevelBorderColor: "border-blue-700",
-      skillLevelBGColor: "bg-blue-100",
-      skillLogo: <FaCss3Alt color="blue" size={40} />,
-    },
-    {
-      skillName: "TailwindCss",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-cyan-700",
-      skillLevelBorderColor: "border-cyan-700",
-      skillLevelBGColor: "bg-cyan-100",
-      skillLogo: <SiTailwindcss color="cyan" size={40} />,
-    },
-    {
-      skillName: "JavaScript",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-yellow-700",
-      skillLevelBorderColor: "border-yellow-700",
-      skillLevelBGColor: "bg-yellow-100",
-      skillLogo: <SiJavascript size={40} className="text-yellow-500" />,
-    },
-    {
-      skillName: "React",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-cyan-700",
-      skillLevelBorderColor: "border-cyan-700",
-      skillLevelBGColor: "bg-cyan-100",
-      skillLogo: <SiReact size={40} className="text-cyan-700" />,
-    },
-    {
-      skillName: "Responsiveness",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-purple-700",
-      skillLevelBorderColor: "border-purple-700",
-      skillLevelBGColor: "bg-purple-100",
-      skillLogo: <FaMobileAlt size={40} className="text-purple-700" />,
-    },
-  ];
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      once: false,
+      offset: 100,
+    });
+  }, []);
 
-  const backEndSkills = [
+  const sections = [
     {
-      skillName: "Node.js",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-green-700",
-      skillLevelBorderColor: "border-green-700",
-      skillLevelBGColor: "bg-green-100",
+      title: "Front-End Skills",
+      skills: [
+        { name: "HTML", icon: <FaHtml5 color="orange" size={30} />, progress: 90 },
+        { name: "CSS", icon: <FaCss3Alt color="blue" size={30} />, progress: 85 },
+        { name: "JavaScript", icon: <FaJsSquare color="yellow" size={30} />, progress: 80 },
+        { name: "Tailwind CSS", icon: <SiTailwindcss color="cyan" size={30} />, progress: 75 },
+        { name: "React", icon: <FaReact color="cyan" size={30} />, progress: 70 },
+      ],
     },
     {
-      skillName: "Express",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-gray-700",
-      skillLevelBorderColor: "border-gray-700",
-      skillLevelBGColor: "bg-gray-100",
-      skillLogo: <SiExpress size={40} className="text-gray-700" />,
+      title: "Back-End Skills",
+      skills: [
+        { name: "Node.js", icon: <FaNodeJs color="green" size={30} />, progress: 75 },
+        { name: "Express.js", icon: <SiExpress color="gray" size={30} />, progress: 70 },
+        { name: "MongoDB", icon: <SiMongodb color="green" size={30} />, progress: 65 },
+        { name: "MySQL", icon: <SiMysql color="blue" size={30} />, progress: 60 },
+      ],
     },
     {
-      skillName: "MongoDB",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-green-700",
-      skillLevelBorderColor: "border-green-700",
-      skillLevelBGColor: "bg-green-100",
-      skillLogo: <SiMongodb size={40} className="text-green-700" />,
+      title: "Tools I Use",
+      skills: [
+        { name: "Git", icon: <FaGit color="orange" size={30} />, progress: 80 },
+        { name: "GitHub", icon: <SiGithub color="black" size={30} />, progress: 85 },
+        { name: "Slack", icon: <SiSlack color="purple" size={30} />, progress: 75 },
+        { name: "Trello", icon: <SiTrello color="blue" size={30} />, progress: 70 },
+      ],
     },
     {
-      skillName: "MySQL",
-      skillLevel: "Intermediate",
-      skillLevelTextColor: "text-blue-700",
-      skillLevelBorderColor: "border-blue-700",
-      skillLevelBGColor: "bg-blue-100",
-      skillLogo: <SiMysql size={40} className="text-blue-700" />,
-    },
-  ];
-
-  const tools = [
-    {
-      skillName: "Git",
-      skillLevel: "Proficient",
-      skillLevelTextColor: "text-orange-700",
-      skillLevelBorderColor: "border-orange-700",
-      skillLevelBGColor: "bg-orange-100",
-      skillLogo: <SiGit size={40} className="text-orange-700" />,
-    },
-    {
-      skillName: "GitHub",
-      skillLevel: "Proficient",
-      skillLevelTextColor: "text-black",
-      skillLevelBorderColor: "border-black",
-      skillLevelBGColor: "bg-gray-300",
-      skillLogo: <SiGithub size={40} className="text-black" />,
-    },
-    {
-      skillName: "Slack",
-      skillLevel: "Proficient",
-      skillLevelTextColor: "text-purple-700",
-      skillLevelBorderColor: "border-purple-700",
-      skillLevelBGColor: "bg-purple-100",
-      skillLogo: <SiSlack size={40} className="text-purple-700" />,
-    },
-    {
-      skillName: "Trello",
-      skillLevel: "Proficient",
-      skillLevelTextColor: "text-blue-700",
-      skillLevelBorderColor: "border-blue-700",
-      skillLevelBGColor: "bg-blue-100",
-      skillLogo: <SiTrello size={40} className="text-blue-700" />,
+      title: "Professional Skills",
+      skills: [
+        { name: "Communication", icon: <FaReact color="cyan" size={30} />, progress: 85 },
+        { name: "Problem-Solving", icon: <FaReact color="cyan" size={30} />, progress: 80 },
+        { name: "Teamwork", icon: <FaReact color="cyan" size={30} />, progress: 90 },
+        { name: "Time Management", icon: <FaReact color="cyan" size={30} />, progress: 85 },
+      ],
     },
   ];
 
   return (
-    <main className="h-[110%] flex flex-col justify-center bg-[#1f242d] text-white pt-[10%]" id="skills">
-      <div className="flex flex-row justify-center gap-10">
-        {/* Front-End Skills */}
-        <section
-          className="flex flex-col items-center max-w-5xl"
-          data-aos="slide-right"
-        >
-          <h2 className="text-2xl font-bold mb-4">Front-End Skills</h2>
-          <div className="flex flex-col gap-6">
-            {frontEndSkills.map((skill) => (
-              <Card
-                key={skill.skillName}
-                skillName={skill.skillName}
-                skillLevel={skill.skillLevel}
-                skillLevelTextColor={skill.skillLevelTextColor}
-                skillLevelBorderColor={skill.skillLevelBorderColor}
-                skillLevelBGColor={skill.skillLevelBGColor}
-                skillLogo={skill.skillLogo}
-              />
-            ))}
-          </div>
-        </section>
+    <div className="font-poppins pt-20 text-white" id="skills">
+      <h1 className="text-4xl font-bold text-center mb-10 bg-gradient-to-b from-[#0ef] to-white bg-clip-text text-transparent">
+        My Skills
+      </h1>
 
-        {/* Back-End Skills */}
-        <section
-          className="flex flex-col items-center max-w-5xl"
-          data-aos="slide-up"
-        >
-          <h2 className="text-2xl font-bold mb-4">Back-End Skills</h2>
-          <div className="flex flex-col gap-6">
-            {backEndSkills.map((skill) => (
-              <Card
-                key={skill.skillName}
-                skillName={skill.skillName}
-                skillLevel={skill.skillLevel}
-                skillLevelTextColor={skill.skillLevelTextColor}
-                skillLevelBorderColor={skill.skillLevelBorderColor}
-                skillLevelBGColor={skill.skillLevelBGColor}
-                skillLogo={skill.skillLogo}
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* Tools I Use */}
-        <section
-          className="flex flex-col items-center max-w-5xl"
-          data-aos="slide-left"
-        >
-          <h2 className="text-2xl font-bold mb-4">Tools I Use</h2>
-          <div className="flex flex-col gap-6">
-            {tools.map((tool) => (
-              <Card
-                key={tool.skillName}
-                skillName={tool.skillName}
-                skillLevel={tool.skillLevel}
-                skillLevelTextColor={tool.skillLevelTextColor}
-                skillLevelBorderColor={tool.skillLevelBorderColor}
-                skillLevelBGColor={tool.skillLevelBGColor}
-                skillLogo={tool.skillLogo}
-              />
-            ))}
-          </div>
-        </section>
+      {/* Skills Sections with Responsive Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mx-[5%] gap-[5%]">
+        {sections.map((section, index) => (
+         <section
+         key={index}
+         className="mb-16 p-4 rounded-md shadow-lg bg-glass-pattern backdrop-blur-lg border border-glassBorder"
+         data-aos="fade-up"
+       >
+            <h2 className="text-3xl font-bold text-center mb-6">{section.title}</h2>
+            <div className="flex flex-col gap-6 items-center">
+              {section.skills.map((skill, skillIndex) => (
+                <div key={skillIndex} className="bar w-11/12 max-w-md">
+                  <div className="flex items-center gap-3">
+                    {skill.icon}
+                    <span className="text-lg font-medium">{skill.name}</span>
+                  </div>
+                  <div className="progress-line bg-gray-700 h-2 w-full mt-2 relative">
+                    <span
+                      className="absolute bg-gradient-to-r from-[#0ef] to-blue-300 h-2"
+                      style={{ width: `${skill.progress}%` }}
+                    ></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
-    </main>
+    </div>
   );
 };
 

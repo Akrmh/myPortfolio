@@ -42,7 +42,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <main className="bg-[#1f242d] text-white min-w-screen">
+    <main className="bg-[#1f242d] text-white ">
       <section
         className="home flex flex-col md:flex-row justify-between items-center min-h-screen px-10 pt-20"
         data-aos="fade-in"

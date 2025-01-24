@@ -12,7 +12,7 @@ const AboutMe = () => {
   return (
     <main
       id="aboutMe"
-      className="bg-[#1f242d] text-white flex items-center justify-center pt-[5vh] z-0"
+      className="bg-[#1f242d] min-w-full text-white flex items-center justify-center pt-[5vh] z-0"
     >
       <div className="max-w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center h-[100vh] rounded-[50px] py-10 px-10 md:px-24 relative z-0 space-x-5">
         {/* Left Section (Text) */}
