@@ -30,11 +30,11 @@ const ContactMe = () => {
   };
 
   return (
-    <div id="contactMe" className="flex justify-center items-center h-screen bg-[#1f242d] text-white pt-8">
+    <div id="contactMe" className="flex justify-center items-center h-screen bg-[#1f242d] text-white pt-10 max-sm:mt-[15vh]">
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg"
+        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg "
       >
         <h2 className="text-2xl font-bold mb-6">Contact Me</h2>
         <div className="mb-4">

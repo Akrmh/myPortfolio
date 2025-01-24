@@ -12,7 +12,7 @@ const AboutMe = () => {
   return (
     <main
       id="aboutMe"
-      className="bg-[#1f242d] text-white flex items-center justify-center pt-[5vh] z-0"
+      className="bg-[#1f242d] min-w-full text-white flex items-center justify-center pt-[5vh] z-0"
     >
       <div className="max-w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center h-[100vh] rounded-[50px] py-10 px-10 md:px-24 relative z-0 space-x-5">
         {/* Left Section (Text) */}
@@ -27,19 +27,10 @@ const AboutMe = () => {
 
           {/* About Description */}
           <p className="text-justify text-lg text-gray-300 w-full max-w-3xl md:mx-0">
-            Hi, I&apos;m Akrmh Mohamedzain, a passionate Full-Stack Web Developer
-            with a love for creating intuitive and engaging user experiences.
-            With expertise in both front-end and back-end technologies, I focus
-            on building scalable and efficient applications. I enjoy solving
-            complex problems and learning new technologies to stay on top of
-            industry trends.
-            <br />
-            <br />
-            When I&apos;m not coding, I love exploring creative coding projects and
-            enhancing my skills through real-world practice. My goal is to build
-            solutions that not only meet business requirements but also offer
-            seamless interactions for users. Let&apos;s collaborate and create
-            something amazing!
+            Hi, I&apos;m Akrmh Mohamedzain, a passionate Full-Stack Web Developer with a focus on creating modern, scalable web applications. 
+            I have experience with both front-end and back-end technologies, allowing me to build dynamic user experiences from start to finish. 
+            My goal is to solve real-world problems through code and deliver efficient, high-quality solutions. 
+            Let&apos;s collaborate and build something awesome together!
           </p>
         </div>
 

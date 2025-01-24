@@ -43,7 +43,17 @@ export default {
       boxShadow: {
         'custom-glow': '0 0 20px #0ef', // Add the custom glow shadow
       },
+      // Glass effect styles
+      backgroundImage: {
+        'glass-pattern': 'linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
+      },
+      backdropBlur: {
+        'lg': '10px',
+      },
+      colors: {
+        glassBorder: 'rgba(255, 255, 255, 0.2)',
+      },
     },
   },
   plugins: [],
-}
+};
