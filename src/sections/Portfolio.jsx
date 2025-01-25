@@ -4,21 +4,25 @@ const Portfolio = () => {
       title: "Personal Portfolio",
       pcImage: "../../src/assets/portfolio-pc.png",
       mobileImage: "../../src/assets/portfolio-mobile.png",
+      description: `A responsive portfolio website showcasing my skills, projects, and contact information. Built using modern web technologies.`,
     },
     {
       title: "Calculator",
       pcImage: "../../src/assets/pc-calc.png",
       mobileImage: "../../src/assets/mobile-calc.png",
+      description: `A simple and functional calculator application that performs basic arithmetic operations with a clean and user-friendly interface.`,
     },
     {
       title: "Task Tracker",
       pcImage: "../../src/assets/pc-task-tracker.png",
       mobileImage: "../../src/assets/mobile-task-tracker.png",
+      description: `An intuitive task management app to create, track, and organize daily tasks. Features include adding, editing, and deleting tasks.`,
     },
     {
       title: "Bookmarks",
       pcImage: "../../src/assets/bc-bookmarks.png",
       mobileImage: "../../src/assets/mobile-bookmarks.png",
+      description: `A web application to save, manage, and organize your favorite websites in one place. Includes features like categorization and quick search.`,
     },
   ];
 
@@ -40,6 +44,7 @@ const Portfolio = () => {
                   className="w-full rounded-lg"
                 />
                 <p className="text-center mt-2 text-gray-400">PC View</p>
+                <p className="pt-5 text-justify">{project.description}</p>
               </div>
               <div className="w-1/2">
                 <img

@@ -1,19 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const myImage = "../src/assets/٢٠١٩٠٦٢١_١٠٠٥١١.jpg";
+const images = [
+  "../src/assets/pic1.avif",
+  "../src/assets/pic2.avif",
+  "../src/assets/pic3.avif",
+];
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const typedRef = useRef(null);
+
   const handleClick = () => {
     const contactMe = document.getElementById("contactMe");
     if (contactMe) {
       contactMe.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const typedRef = useRef(null);
 
   useEffect(() => {
     // Initialize Typed.js
@@ -35,14 +40,23 @@ const Hero = () => {
   useEffect(() => {
     // Initialize AOS
     AOS.init({
-      duration: 1000, // Duration of the animation in ms
-      once: false, // Allow animations to trigger on every scroll
-      offset: 100, // Trigger animation when element is 100px from viewport
+      duration: 1000,
+      once: false,
+      offset: 100,
     });
   }, []);
 
+  useEffect(() => {
+    // Automatically rotate images every 3 seconds
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <main className="bg-[#1f242d] text-white ">
+    <main className="bg-[#1f242d] text-white">
       <section
         className="home flex flex-col md:flex-row justify-between items-center min-h-screen px-10 pt-20"
         data-aos="fade-in"
@@ -58,9 +72,10 @@ const Hero = () => {
             </span>
           </h3>
           <p className="text-lg text-gray-300 mb-5" data-aos="fade-up">
-            Do you want to build an awesome website that stands out? 
-            I specialize in creating modern, user-friendly, and visually stunning web solutions 
-            tailored to your needs. Let’s turn your ideas into reality!
+            Do you want to build an awesome website that stands out? I
+            specialize in creating modern, user-friendly, and visually stunning
+            web solutions tailored to your needs. Let’s turn your ideas into
+            reality!
           </p>
           <div className="flex space-x-4 mb-5">
             <a
@@ -108,13 +123,23 @@ const Hero = () => {
           </a>
         </div>
 
-        {/* Right Section */}
-        <div className="mt-10 md:mt-0" data-aos="fade-left">
-          <img
-            src={myImage}
-            alt="Profile"
-            className="w-[350px] h-[350px] md:w-[400px] md:h-[450px] rounded-[50%] shadow-custom-glow transition"
-          />
+        {/* Right Section with Rotating Images */}
+        <div
+          className="mt-10 md:mt-0 relative w-[350px] h-[350px] md:w-[600px] md:h-[450px] overflow-hidden border-4 border-[#0ef] shadow-custom-glow"
+          data-aos="fade-left"
+        >
+          {images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt="Work"
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
+                index === currentImageIndex
+                  ? "animate-slideRight opacity-100"
+                  : "opacity-0"
+              }`}
+            />
+          ))}
         </div>
       </section>
     </main>
